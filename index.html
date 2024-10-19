@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thay đổi CSS</title>
+    <style>
+        #NoiDung {
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            height: 50px;
+        }
+        .btn-color {
+            margin: 5px;
+        }
+        .font-size, .height-size {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Các nút điều chỉnh -->
+    <button class="btn-color" onclick="changeColor('blue')">Xanh</button>
+    <button class="btn-color" onclick="changeColor('red')">Đỏ</button>
+    <button class="btn-color" onclick="changeColor('yellow')">Vàng</button>
+    <button class="btn-color" onclick="changeColor('transparent')">Không màu</button>
+
+    <!-- Tùy chọn cỡ chữ -->
+    <select class="font-size" id="fontSizeSelect">
+        <option value="20px">20px</option>
+        <option value="25px">25px</option>
+        <option value="30px">30px</option>
+    </select>
+    <button onclick="setFontSize()">Đặt cỡ chữ</button>
+
+    <!-- Tùy chọn chiều cao -->
+    <select class="height-size" id="heightSelect">
+        <option value="100px">100px</option>
+        <option value="150px">150px</option>
+        <option value="200px">200px</option>
+    </select>
+    <button onclick="setHeight()">Đặt chiều cao</button>
+    <button onclick="increaseHeight()">Tăng chiều cao</button>
+
+    <button onclick="applyTitleCSS()">Nạp css tiêu đề</button>
+    <button onclick="applyContentCSS()">Nạp css nội dung</button>
+
+    <!-- Nội dung -->
+    <div id="NoiDung">#NoiDung: Xin chào các bạn!</div>
+
+    <script>
+        function changeColor(color) {
+            document.getElementById('NoiDung').style.backgroundColor = color;
+        }
+
+        function setFontSize() {
+            const fontSize = document.getElementById('fontSizeSelect').value;
+            document.getElementById('NoiDung').style.fontSize = fontSize;
+        }
+
+        function setHeight() {
+            const height = document.getElementById('heightSelect').value;
+            document.getElementById('NoiDung').style.height = height;
+        }
+
+        function increaseHeight() {
+            const currentHeight = parseInt(window.getComputedStyle(document.getElementById('NoiDung')).height);
+            document.getElementById('NoiDung').style.height = (currentHeight + 50) + 'px';
+        }
+
+        function applyTitleCSS() {
+            document.getElementById('NoiDung').style.fontWeight = 'bold';
+            document.getElementById('NoiDung').style.textTransform = 'uppercase';
+        }
+
+        function applyContentCSS() {
+            document.getElementById('NoiDung').style.fontStyle = 'italic';
+            document.getElementById('NoiDung').style.color = 'green';
+        }
+    </script>
+
+</body>
+</html>
